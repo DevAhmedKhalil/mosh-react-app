@@ -1,3 +1,4 @@
+import Alert from "./components/Alert";
 import ListGroup from "./components/ListGroup";
 
 function App() {
@@ -16,6 +17,9 @@ function App() {
 
   return (
     <div>
+      <Alert>
+        This is a primary <strong>alert—check</strong> it out!
+      </Alert>
       <ListGroup
         items={items}
         heading="Cities"
