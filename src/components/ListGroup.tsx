@@ -1,19 +1,22 @@
 import { useState } from "react";
 
-function ListGroup() {
-  let cites = ["New York", "San Francisco", "Tokyo", "London", "Paris", "Rome"];
+interface ListGroupProps {
+  items: string[];
+  heading: string;
+}
 
+function ListGroup({ items, heading }: ListGroupProps) {
   // State Hook
   let [selectedIndex, setSelectedIndex] = useState(-1);
 
   return (
     <>
-      <h1>My best countries: </h1>
+      <h1>{heading}</h1>
 
-      {cites.length > 0 && <p>Showing {cites.length} cities</p>}
+      {items.length > 0 && <p>Showing {items.length} cities</p>}
 
       <ul className="list-group ">
-        {cites.map((city, index) => (
+        {items.map((city, index) => (
           <li
             key={city}
             className={
