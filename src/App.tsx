@@ -1,4 +1,5 @@
 import Alert from "./components/Alert";
+import Button from "./components/Button";
 import ListGroup from "./components/ListGroup";
 
 function App() {
@@ -17,6 +18,12 @@ function App() {
 
   return (
     <div>
+      <Button
+        color="warning"
+        onClick={() => console.log("Button clicked!")}
+      >
+        Click Me
+      </Button>
       <Alert>
         This is a primary <strong>alert—check</strong> it out!
       </Alert>
