@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import "./ListGrout.css";
+import styles from "./ListGrout.module.css";
 
 interface ListGroupProps {
   items: string[];
@@ -18,7 +18,9 @@ function ListGroup({ items, heading, onSelectItem }: ListGroupProps) {
 
       {items.length > 0 && <p>Showing {items.length} cities</p>}
 
-      <ul className="list-group ">
+      {/* <ul className="list-group "> */}
+      {/* <ul className={styles["list-group"]}> */}
+      <ul className={[styles.listGroup, styles.container].join(" ")}>
         {items.map((city, index) => (
           <li
             key={city}
