@@ -1,37 +1,20 @@
+import { useState } from "react";
 import Alert from "./components/Alert";
 import Button from "./components/Button";
-import ListGroup from "./components/ListGroup";
 
 function App() {
-  const items = [
-    "New York",
-    "San Francisco",
-    "Tokyo",
-    "London",
-    "Paris",
-    "Rome",
-  ];
-
-  const handleSelectItem = (item: string) => {
-    console.log("Selected item:", item);
-  };
+  const [alertVisible, setAlertVisibility] = useState(false);
 
   return (
     <div>
-      <Button
-        color="warning"
-        onClick={() => console.log("Button clicked!")}
-      >
+      {alertVisible && (
+        <Alert onClose={() => setAlertVisibility(!alertVisible)}>
+          This is an alert message!
+        </Alert>
+      )}
+      <Button color="primary" onClick={() => setAlertVisibility(!alertVisible)}>
         Click Me
       </Button>
-      <Alert>
-        This is a primary <strong>alert—check</strong> it out!
-      </Alert>
-      <ListGroup
-        items={items}
-        heading="Cities"
-        onSelectItem={handleSelectItem}
-      />
     </div>
   );
 }
