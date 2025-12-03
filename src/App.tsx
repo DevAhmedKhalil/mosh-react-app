@@ -12,11 +12,11 @@ function App() {
     <div>
       <FaHeart
         size={40}
-        color={liked ? "red" : "gray"} // ← يتغير تلقائي
+        color={liked ? "red" : "gray"}
         onClick={() => {
           setLiked(!liked);
           console.log("clicked");
-        }} // ← يغير الـ state
+        }}
       />
 
       <br />
