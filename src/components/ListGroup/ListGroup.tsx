@@ -1,6 +1,21 @@
 import { useState } from "react";
 
-import styles from "./ListGrout.module.css";
+import styled from "styled-components";
+
+const List = styled.ul`
+  list-style: none;
+  padding: 0;
+`;
+
+interface ListItemProps {
+  active: boolean;
+}
+
+const ListItem = styled.li<ListItemProps>`
+  padding: 5px 0;
+  background-color: ${(props) => (props.active ? "lightblue" : "white")};
+  cursor: pointer;
+`;
 
 interface ListGroupProps {
   items: string[];
@@ -18,26 +33,20 @@ function ListGroup({ items, heading, onSelectItem }: ListGroupProps) {
 
       {items.length > 0 && <p>Showing {items.length} cities</p>}
 
-      {/* <ul className="list-group "> */}
-      {/* <ul className={styles["list-group"]}> */}
-      <ul className={[styles.listGroup, styles.container].join(" ")}>
+      <List>
         {items.map((city, index) => (
-          <li
+          <ListItem
+            active={index === selectedIndex}
             key={city}
-            className={
-              selectedIndex === index
-                ? "list-group-item active"
-                : "list-group-item"
-            }
             onClick={() => {
               setSelectedIndex(index);
               onSelectItem(city);
             }}
           >
             {city}
-          </li>
+          </ListItem>
         ))}
-      </ul>
+      </List>
     </>
   );
 }
