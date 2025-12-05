@@ -1,27 +1,28 @@
 import { useState } from "react";
 
 function App() {
-  const [tags, setTags] = useState(["happy", "exciting", "cheerful"]);
+  const [bugs, setBugs] = useState([
+    { id: 1, title: "bug1", fixed: false },
+    { id: 2, title: "bug2", fixed: false },
+  ]);
 
   const handleClick = () => {
-    // Add tag for Array
-    setTags([...tags, "sad"]);
-
-    // Remove tag
-    setTags(tags.filter((tag) => tag !== "happy"));
-
-    // Update tag
-    setTags(tags.map((tag) => (tag === "happy" ? "not happy" : tag)));
+    setBugs((prevBugs) =>
+      prevBugs.map((bug) => (bug.id === 1 ? { ...bug, fixed: true } : bug))
+    );
   };
 
   return (
     <div>
-      <h1>Tags</h1>
+      <h1>Bugs</h1>
       <ul>
-        {tags.map((tag, index) => (
-          <li key={index}>{tag}</li>
+        {bugs.map((bug, index) => (
+          <li key={index}>
+            {bug.title} - {bug.fixed ? "Fixed" : "Not Fixed"}
+          </li>
         ))}
       </ul>
+      <button onClick={handleClick}>Fix Bug 1</button>
     </div>
   );
 }
