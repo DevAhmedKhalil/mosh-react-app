@@ -16,8 +16,8 @@ function App() {
     <div>
       {fullName}
       <Message />
-      <Message />
-      <Message />
+      {/* <Message /> */}
+      {/* <Message /> */}
     </div>
   );
 }
