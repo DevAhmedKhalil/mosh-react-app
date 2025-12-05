@@ -1,35 +1,17 @@
 import { useState } from "react";
-import Button from "./components/Button/Button";
-import ListGroup from "./components/ListGroup";
-import { FaCity, FaHeart } from "react-icons/fa";
 
 function App() {
-  const [liked, setLiked] = useState(false); // ← ده الـ state الحقيقي
+  // const [firstName, setFirstName] = useState<string>("Ahmed");
+  // const [lastName, setLastName] = useState<string>("Khalil");
 
-  const cities = ["New York", "Los Angeles", "Chicago", "Houston", "Phoenix"];
+  const [person, setPerson] = useState({
+    firstName: "Ahmed",
+    lastName: "Khalil",
+  });
 
-  return (
-    <div>
-      <FaHeart
-        size={40}
-        color={liked ? "red" : "gray"} // ← يتغير تلقائي
-        onClick={() => {
-          setLiked(!liked);
-          console.log("clicked");
-        }} // ← يغير الـ state
-      />
+  const fullName = `${person.firstName} ${person.lastName}`.trim();
 
-      <br />
-
-      <FaCity color="blue" size={40} />
-      <ListGroup
-        items={cities}
-        heading="Cities"
-        onSelectItem={(city) => console.log(city)}
-      />
-      <Button>Click Me</Button>
-    </div>
-  );
+  return <div>{fullName}</div>;
 }
 
 export default App;
