@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Message from "./components/Message";
 
 function App() {
   // const [firstName, setFirstName] = useState<string>("Ahmed");
@@ -11,7 +12,14 @@ function App() {
 
   const fullName = `${person.firstName} ${person.lastName}`.trim();
 
-  return <div>{fullName}</div>;
+  return (
+    <div>
+      {fullName}
+      <Message />
+      <Message />
+      <Message />
+    </div>
+  );
 }
 
 export default App;
