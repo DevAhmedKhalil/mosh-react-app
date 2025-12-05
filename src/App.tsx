@@ -1,40 +1,27 @@
 import { useState } from "react";
 
 function App() {
-  const [customer, setCustomer] = useState({
-    name: "ahmed",
-    address: {
-      city: "cairo",
-      zipcode: 12345,
-    },
-  });
+  const [tags, setTags] = useState(["happy", "exciting", "cheerful"]);
 
   const handleClick = () => {
-    //@ When dealing with [objects & arrays] =>
-    //@ you shoud remember to treat them as immutable or read only.
-    //? Update nested objests
+    // Add tag for Array
+    setTags([...tags, "sad"]);
 
-    // setCustomer({...customer});
-    //# This object with refrence the same address on the memoryso
+    // Remove tag
+    setTags(tags.filter((tag) => tag !== "happy"));
 
-    setCustomer({
-      ...customer,
-      address: { ...customer.address, zipcode: 111555 },
-    });
-    //# We want to make sure that the new obj is independent of the exsting object
+    // Update tag
+    setTags(tags.map((tag) => (tag === "happy" ? "not happy" : tag)));
   };
 
   return (
     <div>
-      {"My name is: " +
-        customer.name +
-        " I live in: " +
-        customer.address.city +
-        " zip code is: " +
-        customer.address.zipcode}
-      <br />
-      <br />
-      <button onClick={handleClick}>Update The Price</button>
+      <h1>Tags</h1>
+      <ul>
+        {tags.map((tag, index) => (
+          <li key={index}>{tag}</li>
+        ))}
+      </ul>
     </div>
   );
 }
