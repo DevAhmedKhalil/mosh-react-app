@@ -1,4 +1,5 @@
 import React from "react";
+import { cagegories } from "../../App";
 
 interface Props {
   onSelectCategory: (category: string) => void;
@@ -11,10 +12,11 @@ const ExpenseFilter = ({ onSelectCategory }: Props) => {
       onChange={(e) => onSelectCategory(e.target.value)}
     >
       <option value="all">All Categories</option>
-      <option value="food">Food</option>
-      <option value="utilities">Utilities</option>
-      <option value="health">Health</option>
-      <option value="entertainment">Entertainment</option>
+      {cagegories.map((category) => (
+        <option key={category} value={category}>
+          {category}
+        </option>
+      ))}
     </select>
   );
 };
