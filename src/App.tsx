@@ -36,7 +36,11 @@ function App() {
     <div>
       <h1 className="text-center my-4">Expense Tracker</h1>
       <div className="mb-5">
-        <ExpenseForm />
+        <ExpenseForm
+          onSubmit={(expense) => {
+            setExpences([...expences, { ...expense, id: expences.length + 1 }]);
+          }}
+        />
       </div>
       <div className="mb-3">
         <ExpenseFilter
