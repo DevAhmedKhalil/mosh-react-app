@@ -1,15 +1,14 @@
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 function App() {
   const [users, setUsers] = useState<any[]>([]);
 
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/users")
-      .then((res) => res.json())
-      .then((data) => setUsers(data));
-    // res.json() converts the raw response into JSON.
-    // setUsers(data) updates the React state with that JSON and stores it in state so you can access it.
-  }, []);
+    axios
+      .get("https://jsonplaceholder.typicode.com/users")
+      .then((res) => setUsers(res.data));
+  }, []); //? axios is used to fetch data from an API endpoint when the component mounts, returning the data in JSON format.
 
   return (
     <div className="p-6 max-w-4xl mx-auto">
